@@ -15,7 +15,7 @@ var execute = require('knex')({
 });
 var customers = express.Router();
 //var departments = express.Router();;
-//var products = express.Router();
+var products = express.Router();
 
 require('./routes/customers')(customers, execute);
 //require('./routes/departments')(departments, execute);
