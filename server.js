@@ -19,11 +19,11 @@ var products = express.Router();
 
 require('./routes/customers')(customers, execute);
 //require('./routes/departments')(departments, execute);
-//require('./routes/products')(products, execute);
+require('./routes/products')(products, execute);
 
 app.use('/customers', customers)
 //app.use('/departments', departments);
-//app.use('/products', products);
+app.use('/products', products);
 
 
 app.listen(PORT || 3000, () => {
