@@ -14,17 +14,19 @@ var execute = require('knex')({
     }
 });
 var customers = express.Router();
-//var departments = express.Router();;
+var departments = express.Router();;
+var products = express.Router();
 var products = express.Router();
 
 require('./routes/customers')(customers, execute);
-//require('./routes/departments')(departments, execute);
+require('./routes/departments')(departments, execute);
 require('./routes/products')(products, execute);
+require('./routes/category')(products, execute);
 
 app.use('/customers', customers)
-//app.use('/departments', departments);
+app.use('/departments', departments);
 app.use('/products', products);
-
+app.use('/categories', products);
 
 app.listen(PORT || 3000, () => {
     console.log(`your app is listening at ${PORT}`);

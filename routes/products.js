@@ -1,7 +1,7 @@
 var error = require('../middleware/error');
 const checkToken = require('../middleware/middleware');
 const jwt = require('jsonwebtoken');
-const configdata = require('../config')
+const configdata = require('../database/config')
 
 module.exports = function(products, execute) {
     // to get all the products
