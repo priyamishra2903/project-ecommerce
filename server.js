@@ -1,35 +1,25 @@
-const express = require('express'),
-configdata = require('./database/config'),
+const express = require("express");
+var app = express();
+const bodyParser = require('body-parser');
+const {to} = require('await-to-js');
+const Sequelize = require('sequelize');
+require('dotenv').config();
 
-app = express()
-const { DB_HOST, DB_USER, DB_NAME, DB_PASS, PORT } = configdata.envdata
-app.use(express.json());
-var execute = require('knex')({
-    client: 'mysql',
-    connection: {
-        host: DB_HOST,
-        user: DB_USER,
-        database: DB_NAME,
-        password: DB_PASS
-    }
+app.use("/customer", require("./routes/customer"));
+app.use("/categories", require("./routes/category"));
+app.use("/product", require("./routes/product"));
+app.use("/shoppingcart", require("./routes/cart"));
+app.use("/orders", require("./routes/order"));
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, (req, res) => {
+   
+    console.log(`Server is running on PORT ${PORT}`);
 });
-var customers = express.Router();
-var departments = express.Router();;
-var products = express.Router();
-var categories = express.Router();
-var shoppingcart = express.Router();
 
-
-require('./routes/customers')(customers, execute);
-require('./routes/departments')(departments, execute);
-require('./routes/products')(products, execute);
-require('./routes/category')(categories, execute);
-
-app.use('/customers', customers)
-app.use('/departments', departments);
-app.use('/products', products);
-app.use('/categories', categories);
-
-app.listen(PORT || 3000, () => {
-    console.log(`your app is listening at ${PORT}`);
-})
+module.exports = app;

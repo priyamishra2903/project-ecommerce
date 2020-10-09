@@ -1,4 +1,4 @@
-// error response
+
 module.exports = {
     error500: {
         "code": "USR_02",
