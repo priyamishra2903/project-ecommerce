@@ -53,7 +53,7 @@ ordercontroller.place_your_Order = async(req, res) => {
         return res.json({ data: null, error: "Invalid Payload"});
     }
 
-    let [err, result] = await to(order_service.place_your_Order(req.body))
+    let [err, result] = await to(OrderService.place_your_Order(req.body))
     if(err)
         res.json({ data: null, error: err});
     return res.json({ message:"Order placed successfully"});

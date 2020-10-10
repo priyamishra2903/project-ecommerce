@@ -8,7 +8,7 @@ const validation = require('../bin/src/joi');
 const ProductService = require('../services/product');
 
 productcontroller.get_all_Products = async(req, res) => {
-    let [err, result] = await to(ProductService.getProducts())
+    let [err, result] = await to(ProductService.get_all_Products())
     if(err)
         return res.json({ data: null, error: err});
     
@@ -16,7 +16,7 @@ productcontroller.get_all_Products = async(req, res) => {
 }
 
 productcontroller.get_Products_By_Id = async(req, res) => {
-    let [err, result] = await to(ProductService.getProductsById(req.params.id))
+    let [err, result] = await to(ProductService.get_Products_By_Id(req.params.id))
     if(err)
         return res.json({ data: null, error: err});
     
@@ -25,7 +25,7 @@ productcontroller.get_Products_By_Id = async(req, res) => {
 
 productcontroller.search_Products = async(req, res) => {
     const category = req.params.name;
-    let [err, result] = await to(ProductService.searchProducts(category))
+    let [err, result] = await to(ProductService.search_Products(category))
     if(err)
         return res.json({ data: null, error: err});
     
@@ -33,7 +33,7 @@ productcontroller.search_Products = async(req, res) => {
 }
 
 productcontroller.get_Products_In_Category = async(req, res) => {
-    let [err, result] = await to(ProductService.getProductsInCategory(req.params.category_id))
+    let [err, result] = await to(ProductService.get_Products_In_Category(req.params.category_id))
     if(err)
         return res.json({ data: null, error: err});
     
@@ -41,7 +41,7 @@ productcontroller.get_Products_In_Category = async(req, res) => {
 }
 
 productcontroller.get_Details_By_Id = async(req, res) => {
-    let [err, result] = await to(ProductService.getDetailsById(req.params.id))
+    let [err, result] = await to(ProductService.get_Details_By_Id(req.params.id))
     if(err)
         return res.json({ data: null, error: err});
     

@@ -5,7 +5,7 @@ const Op = Sequelize.Op;
 const db = require('../bin/database/modelconnect');
 
 
-async function get_Products(){
+async function get_all_Products(){
     let [err, result] = await to( db.productModel.findAll())
     if (err){
         return err;
@@ -143,6 +143,6 @@ async function add_Reviews(product_id, review){
 }
 
 module.exports ={
-    get_Products, get_Products_By_Id, search_Products, get_Details_By_Id,
+    get_all_Products, get_Products_By_Id, search_Products, get_Details_By_Id,
     get_Products_In_Category, add_Reviews, get_Reviews
 }
