@@ -1,12 +1,11 @@
 var express = require('express');
-var customercontroller = express.Router();
-
 const {to} = require('await-to-js');
 const Sequelize = require('sequelize');
 const bcrypt  = require('bcrypt');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
+require('dotenv').config();
+var customercontroller = express.Router();
 const validation = require('../bin/src/joi');
 const CustomerService = require('../services/customer');
 const db = require('../bin/database/modelconnect');
