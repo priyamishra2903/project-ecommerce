@@ -1,10 +1,11 @@
 E- Commerce:
+
 E-commerce is the activity of electronically buying or selling of products on online services or over the Internet. 
 
 Project deals with a set of customers apis, categories along with product apis and accessing shopping cart and placing orders.
 Functionalities included are-
-JWT authentication
-Joi Validations
+-JWT authentication
+-Joi Validations
 Sequelize
 Winston Logging
 Sentry alert
